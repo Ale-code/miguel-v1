@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/menu';
+const url = 'https://chicharronera-servicio.onrender.com/menu';
 
 export const obtenerProductos = async()=>{
     //consultar el db.json y obtener el listado de productos que se encuentran alli

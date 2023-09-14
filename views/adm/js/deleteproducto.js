@@ -3,7 +3,7 @@ const selectProduct = document.querySelector("#productSelect");
 document.addEventListener("DOMContentLoaded", async () => {
   //obtener todos los productos
   axios
-    .get(`http://localhost:5000/getproducts`)
+    .get(`https://chicharronera-servicio.onrender.com/getproducts`)
     .then((response) => response.data)
     .then((data) => {
       selectProduct.innerHTML = `<option value="" disabled="" selected="">Seleccionar...</option>`;
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 selectProduct.addEventListener("change", function (e) {
   //obtener producto por id
   axios
-    .get(`http://localhost:5000/getproduct/${this.value}`)
+    .get(`https://chicharronera-servicio.onrender.com/getproduct/${this.value}`)
     .then((response) => response.data)
     .then((data) => {
       document

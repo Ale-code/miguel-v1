@@ -11,7 +11,7 @@ let articulosCarrito = [];
 // print products
 document.addEventListener("DOMContentLoaded", () => {
   axios
-    .get(`http://localhost:5000/getproducts`)
+    .get(`https://chicharronera-servicio.onrender.com/getproducts`)
     .then((response) => response.data)
     .then((data) => {
       // print in select
