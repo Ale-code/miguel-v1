@@ -120,15 +120,35 @@ app.get("/getproduct/:id", async (req, res) => {
 });
 
 //conexion a la bd
-
-(async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI_DEV);
-    console.log("Te has conectado a MongoDB");
-  } catch (error) {
-    console.log("Error");
+mongoose.connect(
+  process.env.MONGO_URI_DEV,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  (err) => {
+   if(err) console.log(err) 
+   else console.log("mongdb is connected");
   }
-})();
+);
+
+// or
+
+// mongoose.connect(
+//   process.env.MONGO_URL,
+//   options
+// )
+// .then(()=>console.log('connected'))
+// .catch(e=>console.log(e));
+
+// (async () => {
+//   try {
+//     await mongoose.connect(process.env.MONGO_URI_DEV);
+//     console.log("Te has conectado a MongoDB");
+//   } catch (error) {
+//     console.log("Error");
+//   }
+// })();
 
 function generateRandomId(length) {
   const characters =
