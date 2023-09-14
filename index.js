@@ -120,17 +120,27 @@ app.get("/getproduct/:id", async (req, res) => {
 });
 
 //conexion a la bd
+// mongoose.connect(
+//   process.env.MONGO_URI_DEV,
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+//   },
+//   (err) => {
+//    if(err) console.log(err) 
+//    else console.log("mongdb is connected");
+//   }
+// );
+
 mongoose.connect(
   process.env.MONGO_URI_DEV,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  },
-  (err) => {
-   if(err) console.log(err) 
-   else console.log("mongdb is connected");
   }
-);
+)
+.then(()=>console.log('connected'))
+.catch(e=>console.log(e));
 
 // or
 
