@@ -120,45 +120,21 @@ app.get("/getproduct/:id", async (req, res) => {
 });
 
 //conexion a la bd
-// mongoose.connect(
-//   process.env.MONGO_URI_DEV,
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true
-//   },
-//   (err) => {
-//    if(err) console.log(err) 
-//    else console.log("mongdb is connected");
-//   }
-// );
+const opciones = {
+  user: "chelseavegasanchez",
+  pass: "1004chelsea",
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+};
 
-mongoose.connect(
-  process.env.MONGO_URI_DEV,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+(async () => {
+  try {
+    await mongoose.connect('mongodb+srv://chelseavegasanchez:1004chelsea@cluster0.qci5ldh.mongodb.net/?retryWrites=true', opciones);
+    console.log("Te has conectado a MongoDB");
+  } catch (error) {
+    console.log("Error");
   }
-)
-.then(()=>console.log('connected'))
-.catch(e=>console.log(e));
-
-// or
-
-// mongoose.connect(
-//   process.env.MONGO_URL,
-//   options
-// )
-// .then(()=>console.log('connected'))
-// .catch(e=>console.log(e));
-
-// (async () => {
-//   try {
-//     await mongoose.connect(process.env.MONGO_URI_DEV);
-//     console.log("Te has conectado a MongoDB");
-//   } catch (error) {
-//     console.log("Error");
-//   }
-// })();
+})();
 
 function generateRandomId(length) {
   const characters =
@@ -256,5 +232,5 @@ app.post("/deleteproduct/:id", async (req, res) => {
     .catch((err) => {
       console.error("Error deleting product:", err);
       res.status(500).json({ message: "bad" });
-    })
+    });
 });
